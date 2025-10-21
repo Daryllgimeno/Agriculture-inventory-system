@@ -40,12 +40,6 @@ const logout = () => {
   <span class="text-lg">Create Product</span>
 </Link>
 
-          <!-- Videos -->
-          <Link href="/videos" class="flex items-center px-3 py-2 rounded hover:bg-gray-700 transition">
-            <Play class="w-7 h-7 mr-3" />
-            <span class="text-lg">Videos</span>
-          </Link>
-
         
        
         </nav>

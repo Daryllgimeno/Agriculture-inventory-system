@@ -32,7 +32,7 @@ const submit = () => {
     <div class="max-w-md w-full">
      
       <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">
-        Welcome to Product Management System
+        Welcome to Agriculture Inventory System
       </h2>
 
       
