@@ -3,6 +3,8 @@ import AuthenticatedPageLayout from '@/Layouts/AuthenticatedLayout.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { Link } from '@inertiajs/vue3'
+import ProductModal from '@/Pages/Products/ProductModal.vue'
+
 
 // Reactive state
 const products = ref({ data: [], current_page: 1, last_page: 1 })
@@ -10,6 +12,7 @@ const selectedCategory = ref('')
 const keyword = ref('')
 const allCategories = ref([])
 const loading = ref(false)
+const showCreateModal = ref(false)
 
 // Modal state
 const showModal = ref(false)
@@ -144,13 +147,19 @@ onMounted(() => {
     <option v-for="cat in allCategories" :key="cat" :value="cat">{{ cat }}</option>
   </select>
 
-  <!-- Create Product -->
-  <Link
-    href="/products/create"
-    class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition"
-  >
-    Create Product
-  </Link>
+ <button
+  @click="showCreateModal = true"
+  class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition"
+>
+  Create Product
+</button>
+
+<ProductModal
+  :show="showCreateModal"
+  :categories="allCategories"
+  @close="showCreateModal = false"
+  @submitted="fetchProducts"
+/>
 
   <!-- Bulk Mode Toggle -->
   <button
